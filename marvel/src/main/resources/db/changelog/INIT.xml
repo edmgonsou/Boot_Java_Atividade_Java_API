@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+				   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+
+	<changeSet id="1" author="edmilson">
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="Ja existe a tabela IDENTIDADE">
+			<not>
+				<tableExists tableName="identidade" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="identidade">
+			<column name="ID" type="int">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_identidade" />
+			</column>
+			<column name="NOME" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="PROFISSAO" type="VARCHAR(255)"/>
+		</createTable>
+		
+		<addAutoIncrement tableName="identidade"
+						  columnName="ID"
+						  columnDataType="int" 
+						  incrementBy="1" 
+						  startWith="1"/>
+		
+	</changeSet>
+	
+	<changeSet id="2" author="edmilson">
+		<preConditions onFail="MARK_RAN"
+			onFailMessage="Ja existe a tabela HEROI">
+			<not>
+				<tableExists tableName="heroi" />
+			</not>
+		</preConditions>
+
+		<createTable tableName="heroi">
+			<column name="ID" type="int">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_heroi" />
+			</column>
+			<column name="NOME" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="PODER" type="VARCHAR(255)"/>
+		</createTable>
+		
+		<addAutoIncrement tableName="heroi"
+						  columnName="ID"
+						  columnDataType="int" 
+						  incrementBy="1" 
+						  startWith="1"/>
+		
+	</changeSet>
+	
+</databaseChangeLog>
